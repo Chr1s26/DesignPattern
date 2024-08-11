@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.util.Arrays;
+
 public class Question {
 	private final static int maxOptionsCount = 6;
 	private String question;
@@ -26,4 +28,13 @@ public class Question {
 		this.question = question;
 	}
 
+	@Override
+	public String toString() {
+		String options =  "";
+		for(int i=0; i<optionCount; i++) {
+			options += "No("+(i+1)+") "+ this.options[i] +"\n";
+		}
+		return "\n "+this.question+ "\n "+ options + "Answer : "+ this.answer +"\n" ;
+	}
+	
 }

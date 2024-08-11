@@ -18,6 +18,16 @@ public class Exam {
 		this.questions[questionCount] = question;
 		this.questionCount++;
 	}
-	
 
+	@Override
+	public String toString() {
+		String title = "\n***************"+this.title+"**************\n";
+		
+		for(int i=0; i< questionCount; i++) {
+			Question question = this.questions[i];
+			title += question;
+		}
+		
+		return title;
+	}
 }

@@ -1,25 +1,20 @@
 package com.example.service;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
 import com.example.model.Question;
 
-public class QuestionService {
-	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+public class QuestionService extends BaseService{
 	private Question question;
 	
 	public QuestionService() {
-		this.question = new Question();
+		
 	}
 	
-	public Question create() throws IOException {
+	public void create() throws IOException {
+		this.question = new Question();
 		this.getQuestion();
 		this.getOptions();
 		this.getAnswer();
-		return this.question;
 	}
 	
 	private void getAnswer() throws IOException {
@@ -44,6 +39,10 @@ public class QuestionService {
 			System.out.print("Do You Want to add new Option yes/no : ");
 			flag = br.readLine();
 		}while(flag.equalsIgnoreCase("yes"));
+	}
+
+	public Question getQuestionObj(){
+		return this.question;
 	}
 
 }
