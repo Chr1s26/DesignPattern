@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Exam {
 	private Question[] question;
-	 static BufferedReader bReader = new BufferedReader(new InputStreamReader(System.in));
+	static BufferedReader bReader = new BufferedReader(new InputStreamReader(System.in));
 	 
 	public Exam() {
 		
