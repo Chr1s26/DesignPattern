@@ -10,22 +10,39 @@ public class ExamService extends BaseService {
 
 	public ExamService() {
 		this.exam = new Exam();
-		this.questionService = new QuestionService();
 	}
 
 	public void create() throws IOException {
 		this.getExamTitle();
 		this.getQuestions();
 	}
-	
+
 	private void getQuestions() throws IOException {
 		String flag = "";
 		do {
-			questionService.create();
+			this.getQuestionType();
+			this.questionService.create();
 			this.exam.addQuestion(questionService.getQuestionObj());
 			System.out.print("Do You Want to add new Question yes/no : ");
 			flag = br.readLine();
-		}while(flag.equalsIgnoreCase("yes"));
+		} while (flag.equalsIgnoreCase("yes"));
+	}
+
+	private void getQuestionType() throws IOException {
+		System.out.print("Enter Question Type : ");
+		String type = br.readLine();
+
+		switch (type) {
+		case "def":
+			this.questionService = new DefinationTypeService();
+			break;
+		case "mult":
+			this.questionService = new MultipleChoiceService();
+			break;
+		default:
+			getQuestionType();
+		}
+
 	}
 
 	private void getExamTitle() throws IOException {
